@@ -82,7 +82,7 @@ def apiDeteksi():
             test_image_x = np.array([image_array])
 
             # Prediksi Gambar
-            y_pred_test_single = model.predict_proba(test_image_x)
+            y_pred_test_single = model.predict(test_image_x)
             y_pred_test_classes_single = np.argmax(y_pred_test_single, axis=1)
 
             hasil_prediksi = cifar10_classes[y_pred_test_classes_single[0]]
@@ -111,4 +111,4 @@ if __name__ == '__main__':
 
     # Run Flask di localhost
     run_with_ngrok(app)
-    app.run()
+    app.run(host="127.0.0.1", port=5000, debug=True)
